@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{name}}</p>
+        <p k-text="name"></p>
+        <p>{{age}}</p>
+        <p>{{doubleAge}}</p>
+        <input type="text" k-model="name">
+        <button @click="changeName">呵呵</button>
+        <div k-html="html"></div>
+    </div>
+    <script src="./compile.js"></script>
+    <script src="./kvue.js"></script>
+    <script>
+        const app = new KVue({
+            el: "#app",
+            data: {
+                name: "I am test.",
+                age: 12,
+                html: '<button>a button</button>',
+                doubleAge: 'bulaike'
+            },
+            created() {
+                console.log('开始啦');
+                setTimeout(() => {
+                    this.name = "我是测试啊"
+                    console.log('我是测试啊');
+                }, 1500);
+            },
+            methods: {
+                changeName() {
+                    this.name = "halou, kkb";
+                    this.age = 1;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
